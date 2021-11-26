@@ -1,5 +1,5 @@
 <?php
-    session_start();
-    session_destroy();
-    echo "Anda telah sukses keluar sistem <b>LOGOUT</b>";
+session_start(); 
+session_destroy();
+	echo "Anda telah sukses keluar sistem <b>LOGOUT</b>";
 ?>
