@@ -1,7 +1,7 @@
 <?php
     include 'koneksi.php';
 ?>
-<h3>FORM PENCARIAN DENGAN PHP MAHASISWA</h3>
+<h3>Form Pencarian Dengan PHP MAHASISWA</h3>
     <form action="" method="get">
         <label>Cari :</label>
             <input type="text" name="cari">

@@ -1,7 +1,7 @@
 <?php
     include 'koneksi.php';
 ?>
-<h3>Form Pencarian DATA KHS Dengan PHP </h3>
+<h3>FORM PENCARIAN DATA KHS Dengan PHP </h3>
     <form action="" method="get">
         <label>Cari :</label>
         <input type="text" name="cari">
@@ -17,16 +17,18 @@
     <tr>
         <th>No</th>
         <th>NIM</th>
-        <th>Kode MK</th>
+        <th>Nama Mahasiswa</th>
+        <th>Kode Matakuliah</th>
+        <th>Nama Matakuliah</th>
         <th>Nilai</th>
     </tr>
     <?php
     if(isset($_GET['cari'])){
         $cari = $_GET['cari'];
-        $sql="select * from khs where nim like'%".$cari."%'";
+        $sql="select mahasiswa.nim, mahasiswa.namaMHS, matakuliah.kodeMK, matakuliah.namaMK, khs.nilai from mahasiswa inner join khs on mahasiswa.nim=khs.nim inner join matakuliah on matakuliah.kodeMK=khs.kodeMK where mahasiswa.nim like'%".$cari."%'";
         $tampil = mysqli_query($con,$sql);
     }else{
-        $sql="select * from khs";
+        $sql="select mahasiswa.nim, mahasiswa.namaMHS, matakuliah.kodeMK, matakuliah.namaMK, khs.nilai from mahasiswa inner join khs on mahasiswa.nim=khs.nim inner join matakuliah on matakuliah.kodeMK=khs.kodeMK";
         $tampil = mysqli_query($con,$sql);
     }
     $no = 1;
@@ -35,7 +37,9 @@
         <tr>
             <td><?php echo $no++; ?></td>
             <td><?php echo $r['nim']; ?></td>
+            <td><?php echo $r['namaMHS']; ?></td>
             <td><?php echo $r['kodeMK']; ?></td>
+            <td><?php echo $r['namaMK']; ?></td>
             <td><?php echo $r['nilai']; ?></td>
         </tr>
     <?php } ?>
